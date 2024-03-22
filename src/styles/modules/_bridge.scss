@@ -1,0 +1,29 @@
+.bridge {
+  @include anime((transform, opacity), 0.5s);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  transform: translateY(100%);
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.bridge__iframe {
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+}
+
+.bridge__cancel {
+  z-index: 4;
+  position: fixed;
+  right: $spacing;
+  bottom: $spacing;
+}

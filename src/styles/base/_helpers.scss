@@ -1,0 +1,6 @@
+@function dark($color, $increment: 20) {
+    @return darken($color, $increment);
+}
+@function light($color, $increment: 20) {
+    @return lighten($color, $increment);
+}

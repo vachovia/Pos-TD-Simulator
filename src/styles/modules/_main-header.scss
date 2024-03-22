@@ -1,0 +1,12 @@
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing ($spacing * 2);
+    border-bottom: 1px solid $color-secondary-light;
+}
+
+.main-header__logo {
+    width: 90px;
+    height: auto;
+}

@@ -1,0 +1,47 @@
+@use "sass:math";
+
+.input {
+    display: flex;
+    font-size: $fz;
+    position: relative;
+    align-items: center;
+    padding: math.div($spacing, 2);
+    background-color: white;
+    border-radius: $border-radius;
+    border: 1px solid $color-secondary;
+
+    & + & {
+        margin-top: math.div($spacing, 2);
+    }
+
+    input {
+        flex: 1;
+    }
+
+    input[type="checkbox"] {
+        flex: 0;
+    }
+
+    label {
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: $bold;
+        display: inline-block;
+        color: $color-accent-2;
+        text-transform: uppercase;
+        margin-right: math.div($spacing, 2);
+    }
+}
+
+.input--invalid {
+    @extend .input;
+    border-color: $color-negative;
+
+    label {
+        color: $color-negative;
+    }
+}
+
+.input__group {
+    display: grid;
+}

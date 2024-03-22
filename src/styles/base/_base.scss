@@ -1,0 +1,127 @@
+@use "sass:math";
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+}
+
+*:focus {
+    outline: 0 !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    @extend %ff;
+    color: $color-primary;
+    font-size: 12px;
+    line-height: 1rem;
+    background-color: $color-secondary-light;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    line-height: 1em;
+    font-weight: $bold;
+}
+
+h2 {
+    color: light($color-primary);
+    text-transform: uppercase;
+}
+
+h3 {
+    color: $color-secondary;
+    margin-bottom: $spacing;
+}
+
+h4 {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+hr {
+    height: 1px;
+    border: none;
+    margin: 20px 0;
+    background-color: $color-secondary-light;
+}
+
+p {
+    font-size: $fz;
+    margin: 0.4em 0 1em;
+    line-height: 1.35em;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+a {
+    cursor: pointer;
+    font-weight: $bold;
+    text-decoration: none;
+}
+
+strong {
+    font-weight: $bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: $spacing;
+    text-align: center;
+
+    &:first-child {
+        width: 100%;
+        text-align: left;
+        padding-left: 0;
+    }
+}
+
+tr {
+    border-bottom: 1px solid $color-secondary-light;
+}
+
+th {
+    font-size: $fz;
+    font-weight: $bold;
+    background-color: white;
+    padding-top: math.div($spacing, 2);
+    padding-bottom: math.div($spacing, 2.5);
+}
+
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+legend {
+    font-size: $fz;
+    font-weight: $bold;
+    margin-bottom: math.div($spacing, 2);
+}
+
+input {
+    border: none;
+    font-size: $fz;
+    background-color: white;
+    border-radius: $border-radius;
+}

@@ -1,0 +1,36 @@
+$bold: 500;
+$normal: 400;
+
+$ff: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+$fz: 14px; // default font-size
+$spacing: 20px; // default spacing unit
+$menu-item-size: 70px;
+$app-width: 1400px;
+
+$color-primary: #222222;
+$color-secondary: #8b959e;
+$color-secondary-light: #f3f4f5;
+$color-secondary-lightest: #eeeeee;
+
+$color-accent-1: #3c809b;
+$color-accent-2: #53afd5;
+
+$color-positive: #14b685;
+$color-negative: #ff5f58;
+
+.negative { color: $color-negative }
+
+$border-radius: 5px;
+
+%ff {
+    font-family: $ff;
+    font-weight: $normal;
+}
+
+%box {
+    overflow: hidden;
+    border: 1px solid $color-secondary-light;
+    border-radius: $border-radius;
+    box-shadow: 0 0 20px 0 rgba($color-secondary, 0.5);
+}

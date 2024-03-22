@@ -1,0 +1,133 @@
+@use "sass:math";
+
+$margin: math.div($spacing, 2);
+
+button,
+[class^='btn'] {
+    @include anime((background-color, color, border-color));
+    color: $color-secondary;
+    font-size: $fz;
+    cursor: pointer;
+    font-weight: $bold;
+    padding: 0 $spacing;
+    display: inline-block;
+    border: 1px solid $color-secondary;
+    line-height: $spacing * 2;
+    border-radius: $border-radius;
+    background-color: white;
+
+    svg {
+        @include anime(fill);
+        top: 5px;
+        width: 20px;
+        height: 20px;
+        fill: $color-primary;
+        position: relative;
+    }
+
+    &.focus,
+    :checked + &,
+    &:hover {
+        color: white;
+        border-color: $color-accent-2;
+        background-color: $color-accent-2;
+
+        svg {
+            fill: white;
+        }
+    }
+
+    :disabled + &,
+    &:disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    & + & {
+        margin-left: $margin;
+    }
+
+    &[class*='-text'] {
+        border: none;
+        padding: 0 ($margin);
+        background-color: transparent;
+
+        :checked + &,
+        &:hover {
+            color: $color-accent-2;
+            border-color: transparent;
+            background-color: transparent;
+
+            svg {
+                fill: $color-accent-2;
+            }
+        }
+    }
+
+    &.del {
+        :checked + &,
+        &:hover {
+            color: white;
+            border-color: $color-negative;
+            background-color: $color-negative;
+
+            svg {
+                fill: white;
+            }
+        }
+    }
+
+    &[class$='-del'] {
+        color: white;
+        border-color: $color-negative;
+        background-color: $color-negative;
+    }
+
+    &[class$='-ok'] {
+        color: white;
+        border-color: $color-positive;
+        background-color: $color-positive;
+    }
+
+    &[class*='-text-del'] {
+        color: $color-negative;
+        border-color: transparent;
+        background-color: transparent;
+
+        svg {
+            fill: $color-negative;
+        }
+
+        :checked + &,
+        &:hover {
+            color: $color-negative;
+            svg {
+                fill: $color-negative;
+            }
+        }
+    }
+
+    &[class*='large'] {
+        padding-left: $spacing * 3;
+        padding-right: $spacing * 3;
+    }
+}
+
+.button__collection {
+    margin: 0 (-$margin) (-$margin) 0;
+
+    button,
+    [class^='btn'] {
+        margin: 0 $margin $margin 0;
+    }
+}
+
+.button-presets {
+    text-align: right;
+
+    strong {
+        margin-right: 15px;
+        color: $color-accent-2;
+        text-transform: uppercase;
+    }
+}

@@ -1,0 +1,17 @@
+.form__group {
+    font-size: $fz;
+    padding: 10px 20px;
+
+    label {
+        margin-top: 10px;
+        margin-right: 6px;
+        font-weight: $bold;
+        display: inline-block;
+    }
+
+    input, select {
+        padding: 2px 8px;
+        border-radius: $border-radius;
+        border: 1px solid $color-primary;
+    }
+}

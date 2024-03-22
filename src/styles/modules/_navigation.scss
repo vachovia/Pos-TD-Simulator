@@ -1,0 +1,55 @@
+.navigation {
+    background-color: $color-secondary-lightest;
+}
+
+.navigation__item {
+    //all: unset; // Edge does not support it yet
+    border: unset;
+    padding: unset;
+    font-size: unset;
+    font-weight: unset;
+    line-height: unset;
+    border-radius: unset;
+    background-color: unset;
+
+    @include anime((background-color, border));
+
+    margin: 0;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    width: $menu-item-size;
+    height: $menu-item-size;
+    justify-content: center;
+    border-left: 4px solid transparent;
+
+    &:hover {
+        border-color: light($color-accent-2);
+        background-color: inherit;
+
+        svg {
+            fill: $color-primary;
+        }
+    }
+
+    &:disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    svg {
+        top: 0;
+        width: 32px;
+        height: 32px;
+        fill: $color-secondary;
+    }
+
+    &.active {
+        background-color: white;
+        border-color: $color-accent-2;
+
+        svg {
+            fill: $color-primary;
+        }
+    }
+}

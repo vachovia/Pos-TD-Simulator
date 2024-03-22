@@ -1,0 +1,67 @@
+$breakpoints: (
+    'large': (
+        max-width: $app-width,
+    ),
+);
+
+// Media query merger
+// Create a single media condition out of a map of queries
+// @param {Map} $queries - Map of media queries
+@mixin media($queries) {
+    @if length($queries) == 0 {
+        @content;
+    } @else {
+        $first-key: nth(map-keys($queries), 1);
+
+        @media ($first-key: map-get($queries, $first-key)) {
+            $queries: map-remove($queries, $first-key);
+
+            @include media($queries) {
+                @content;
+            }
+        }
+    }
+}
+
+// usage example:
+// @include mq(medium) {}
+@mixin mq($breakpoint) {
+    // Get the query map for $breakpoints map
+    $queries: map-get($breakpoints, $breakpoint);
+
+    // If there is no query called $breakpoint in map, throw an error
+    @if not $queries {
+        @error "No value could be retrieved from `#{$breakpoint}`. "
+		+ "Please make sure it is defined in `$breakpoints` map.";
+    }
+
+    // Include the media mixin with $queries
+    @include media($queries) {
+        @content;
+    }
+}
+
+// usage example:
+// normally on body/html tag
+// @include breakpoint-label();
+@mixin breakpoint-label {
+    &:before {
+        color: black;
+        display: block;
+        font-size: 9px;
+        position: fixed;
+        padding: 4px 6px;
+        font-weight: bold;
+        bottom: 0;
+        right: 0;
+        text-transform: uppercase;
+        background-color: rgba(255, 255, 255, 0.5);
+        content: 'xlarge (default • #{$app-width} ++)';
+    }
+
+    @include mq('large') {
+        &:before {
+            content: 'large • max-width: #{$app-width}';
+        }
+    }
+}

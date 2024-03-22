@@ -1,0 +1,19 @@
+.nest-view {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & + & {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid $color-secondary-light;
+    }
+}
+
+.nest-view__body {
+    margin-right: 20px;
+
+    legend:last-child {
+        margin-bottom: 0;
+    }
+}

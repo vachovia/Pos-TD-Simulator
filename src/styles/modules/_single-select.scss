@@ -1,0 +1,22 @@
+@use 'sass:math';
+
+.single-select {
+    display: block;
+
+    input {
+        display: none;
+    }
+
+    & + & {
+        margin-top: 20px;
+    }
+}
+
+.single-select__collection {
+    $margin: math.div($spacing, 2);
+    margin: 0 (-$margin) (-$margin) 0;
+
+    .single-select__item label {
+        margin: 0 $margin $margin 0;
+    }
+}

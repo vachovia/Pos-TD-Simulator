@@ -1,0 +1,103 @@
+@use "sass:math";
+
+.operation {
+    display: grid;
+    grid-gap: $spacing * 2;
+    grid-row-gap: math.div($spacing, 2);
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 1fr auto;
+}
+
+.operation__aside {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+}
+
+.operation__form {
+    display: grid;
+    grid-template-rows: 1fr auto auto;
+}
+
+// background mask to disable
+// interactivity on these statuses
+.operation__status:not(.ongoing):before {
+    top: 0;
+    left: 0;
+    z-index: 1;
+    content: '';
+    width: 100%;
+    opacity: 0.8;
+    height: 100%;
+    display: block;
+    position: fixed;
+    background-color: white;
+}
+
+.operation__status-container {
+    z-index: 2;
+    display: flex;
+    position: relative;
+    align-items: center;
+
+    .ongoing & {
+        justify-content: space-between;
+    }
+
+    .submitting & span {
+        color: $color-accent-2;
+        font-weight: $bold;
+        animation-delay: -0.4s;
+        text-transform: uppercase;
+        animation: flash 2s infinite ease-in-out;
+    }
+
+    @mixin operation_result($color) {
+        justify-content: space-between;
+        border: 1px solid light($color);
+
+        h4 {
+            color: $color;
+        }
+
+        svg {
+            fill: $color;
+            width: $spacing * 2;
+            height: $spacing * 2;
+        }
+    }
+
+    .success & {
+        @include operation_result($color-positive);
+    }
+
+    .failure & {
+        @include operation_result($color-negative);
+    }
+}
+
+.operation__result {
+    display: flex;
+    align-items: center;
+}
+
+.operation__error {
+    color: $color-secondary;
+    display: block;
+    margin-top: 6px;
+}
+
+.operation__amount {
+    font-size: $fz;
+    font-weight: $bold;
+}
+
+.operation__options {
+    display: grid;
+    grid-gap: $spacing;
+    grid-template-columns: 1fr 1fr;
+}
+
+.operation__ctas {
+    text-align: right;
+    grid-column: span 2;
+}

@@ -1,0 +1,47 @@
+@use "sass:math";
+
+/*
+  ** Note on $space-for-footer + absolute .table__summary **
+  MS Edge has issues with `display: grid` and items added to
+  the table was not being displayed. This fixed the issue
+*/
+$space-for-footer: 150px;
+
+.table__container {
+    @extend %box;
+    position: relative;
+    grid-template-rows: 1fr auto;
+    padding: $spacing $spacing $space-for-footer;
+}
+
+.table__summary {
+    position: absolute;
+    left: $spacing;
+    right: $spacing;
+    bottom: $spacing;
+}
+
+.table {
+    th,
+    td {
+        &:last-child {
+            padding: 0;
+        }
+    }
+}
+
+.table__data--currency {
+    text-align: right;
+}
+
+.table__summary-line {
+    display: flex;
+    font-weight: $bold;
+    justify-content: space-between;
+
+    &:not(:last-child) {
+        color: $color-secondary;
+        padding-bottom: math.div($spacing, 6);
+        border-bottom: 1px solid $color-secondary-light;
+    }
+}

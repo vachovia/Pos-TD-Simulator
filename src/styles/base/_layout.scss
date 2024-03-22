@@ -1,0 +1,48 @@
+@use "sass:math";
+
+.l-shell {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: $menu-item-size 1fr;
+}
+
+.l-main {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: $menu-item-size 1fr auto;
+}
+
+.l-section {
+    @extend %box;
+    padding: $spacing;
+    background-color: white;
+
+    & + & {
+        margin-top: $spacing;
+    }
+}
+
+.l-block {
+    margin-top: $spacing;
+}
+
+.l-vspace {
+    margin-top: $spacing;
+    margin-bottom: $spacing;
+}
+
+.l-constrain {
+    width: auto;
+    margin: auto;
+    max-width: $app-width;
+    background-color: white;
+}
+
+.l-container {
+    padding: $spacing;
+}
+
+.l-page {
+    padding: $spacing * 2;
+    padding-bottom: math.div($spacing, 2);
+}
