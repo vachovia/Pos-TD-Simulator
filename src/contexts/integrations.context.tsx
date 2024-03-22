@@ -22,6 +22,7 @@ declare global {
 type Context = {
     handleTransaction(operation: DeprecatedOperation): Promise<unknown>
 }
+
 export const IntegrationsContext = createContext({} as Context)
 
 export const IntegrationsProvider = (props: WithChildren) => {
@@ -70,6 +71,7 @@ type SdkHandler = {
     operation: DeprecatedOperation
     integration: SdkIntegration
 }
+
 async function sdkHandler({ integration, operation }: SdkHandler) {
     const { resolveSdkLoader } = sdkModule
     const { sdkLoaderUrl, bridgeConfig, bridgeOptions, sdkPrintMode } =
@@ -89,13 +91,11 @@ async function sdkHandler({ integration, operation }: SdkHandler) {
     return bridgeAssistant.runTransaction(transaction).then(logResponse)
 
     function logResponse(response: unknown) {
-        console.log(response)
-        return response
+        console.log(response);
+        return response;
     }
 
-    function adaptToTransaction(
-        operation: DeprecatedOperation,
-    ): AssistedTransactionRequest {
+    function adaptToTransaction(operation: DeprecatedOperation): AssistedTransactionRequest {
         switch (operation.type) {
             case 'SALE':
             case 'REFUND':

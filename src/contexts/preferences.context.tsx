@@ -43,6 +43,7 @@ type Context = {
     activeIndustry: string
     setActiveIndustry(industryId: string): void
 }
+
 export const PreferencesContext = createContext({} as Context)
 
 export const PreferencesProvider = (props: WithChildren) => {
